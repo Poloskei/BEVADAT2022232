@@ -172,15 +172,34 @@ def add_border(input_array:np.array)->np.array:
 # list_days()
 
 # %%
+def list_days(start:str,end:str)->np.array:
+    return np.arange(np.datetime64(start,'D'),np.datetime64(end,'D'))
+
+# print(list_days('2023-03','2023-04'))
+
+# %%
 # Írj egy fügvényt ami vissza adja az aktuális dátumot az alábbi formában: YYYY-MM-DD. Térjen vissza egy 'numpy.datetime64' típussal.
 # Be:
 # Ki: 2017-03-24
 # get_act_date()
 
 # %%
+def get_act_date()->np.datetime64:
+    return np.datetime64('today')
+
+
+# %%
 # Írj egy olyan függvényt ami visszadja, hogy mennyi másodperc telt el 1970 január 01. 00:02:00 óta. Int-el térjen vissza
 # Be: 
 # Ki: másodpercben az idó, int-é kasztolva
 # sec_from_1970()
+
+# %%
+def sec_from_1970()->int:
+    dt = np.datetime64('today') - np.datetime64('1970-01-01T00:00:00')
+    return dt.astype(np.int32)
+
+# print(type(sec_from_1970()))
+# print(sec_from_1970())
 
 
