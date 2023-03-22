@@ -1,11 +1,11 @@
 # %%
-import numpy as np
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 
 # %%
 '''
-FONTOS: Az első feladat által visszaadott DataFrame-et kell használni a további feladatokhoz. 
+FONTOS: Az első feladatáltal visszaadott DataFrame-et kell használni a további feladatokhoz. 
 A függvényeken belül mindig készíts egy másolatot a bemenő df-ről, (new_df = df.copy() és ezzel dolgozz tovább.)
 '''
 
@@ -19,12 +19,12 @@ return type: pandas.core.frame.DataFrame
 függvény neve: dict_to_dataframe
 '''
 
-
 # %%
 stats = {"country": ["Brazil", "Russia", "India", "China", "South Africa"],
        "capital": ["Brasilia", "Moscow", "New Dehli", "Beijing", "Pretoria"],
        "area": [8.516, 17.10, 3.286, 9.597, 1.221],
        "population": [200.4, 143.5, 1252, 1357, 52.98] }
+
 def dict_to_dataframe(input_dict):
     df = pd.DataFrame(input_dict)
     return df
@@ -47,7 +47,6 @@ def get_column(input_df, input_string)->pd.core.series.Series:
     return new_df[input_string]
 
 get_column(test_df,'area')
-
 
 # %%
 '''
@@ -102,15 +101,18 @@ függvény neve: plot_population
 '''
 
 # %%
-def plot_population(input_df)->plt.figure.Figure:
-    new_df = input_df.copy
-    fig = plt.figure(figsize = (10, 5))
-    fig.bar(new_df['country'],new_df['population'], color ='maroon', width = 0.4)
+def plot_population(input_df)->plt.figure:
+    new_df = input_df.copy()
+    # fig = plt.figure(figsize = (10, 5))
+    plt.bar(new_df['country'],new_df['population'], color ='maroon', width = 0.4)
     
-    fig.set_xlabel('Country')
-    fig.set_ylabel('Population')
-    fig.set_title('Population of Countries')
-    return fig
+    plt.xlabel('Country')
+    plt.ylabel('Population')
+    plt.title('Population of Countries')
+    plt.show
+    return plt.figure
+
+plot_population(test_df)
 
 # %%
 '''
@@ -126,6 +128,13 @@ függvény neve: plot_area
 '''
 
 # %%
+def plot_area(input_df:pd.DataFrame)->plt.figure:
+    new_df = input_df.copy()
+    plt.pie(new_df['area'],labels=new_df['country'])
+    plt.show()
+    return plt.figure
+
+plot_area(test_df)
 
 
 
