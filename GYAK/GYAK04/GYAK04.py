@@ -104,7 +104,7 @@ függvény neve: plot_population
 def plot_population(input_df)->plt.figure:
     new_df = input_df.copy()
     # fig = plt.figure(figsize = (10, 5))
-    plt.bar(new_df['country'],new_df['population'], color ='maroon', width = 0.4)
+    plt.bar(new_df['country'],new_df['population'])
     
     plt.xlabel('Country')
     plt.ylabel('Population')
