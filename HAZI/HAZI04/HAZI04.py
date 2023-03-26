@@ -23,7 +23,6 @@ függvény neve: csv_to_df
 def csv_to_df(input_string):
     return pd.read_csv(input_string)
 
-df = csv_to_df('StudentsPerformance.csv')
 
 # %%
 '''
@@ -48,7 +47,6 @@ def capitalize_columns(input_df):
     new_df.columns = mylist
     return new_df
 
-capitalize_columns(df)
 
 
 
@@ -69,7 +67,6 @@ def math_passed_count(input_df):
     math = new_df['math score']
     return math[math > 50].count()
 
-math_passed_count(df)
 
 # %%
 '''
@@ -90,7 +87,6 @@ def did_pre_course(input_df):
             output.append(row)
     return pd.DataFrame(output)
 
-did_pre_course(df)
 
 # %%
 '''
@@ -108,7 +104,6 @@ def average_scores(input_df):
     new_df = input_df.copy()
     return new_df.groupby('parental level of education').mean()
 
-average_scores(df)
     
 
 # %%
@@ -135,7 +130,6 @@ def add_age(input_df):
     new_df['age']=age
     return new_df
 
-add_age(df)
 
 # %%
 '''
@@ -153,7 +147,6 @@ def female_top_score(input_df):
     gal = new_df.loc[new_df['gender']=='female'].max()
     return (gal['math score'],gal['reading score'],gal['writing score'])
 
-female_top_score(df)
 
 # %%
 '''
@@ -191,7 +184,6 @@ def add_grade(input_df):
     new_df['grade']=grades
     return new_df
 
-add_grade(df)
 
 # %%
 '''
@@ -217,7 +209,6 @@ def math_bar_plot(input_df):
     plt.title('Average Math Score by Gender')
     return plt.figure
 
-math_bar_plot(df)
 
 # %%
 ''' 
@@ -243,7 +234,6 @@ def writing_hist(input_df):
     plt.hist(new_df['writing score'])
     return plt.figure
 
-writing_hist(df)
 
 # %%
 ''' 
@@ -267,6 +257,5 @@ def enthnicity_pie_chart(input_df):
     plt.title('Proportion of Students by Race/Ethnicity')
     return plt.figure
 
-enthnicity_pie_chart(df)
 
 
