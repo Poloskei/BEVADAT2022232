@@ -79,11 +79,9 @@ függvény neve: population_density
 # %%
 def population_density(input_df)->pd.core.frame.DataFrame:
     new_df = input_df.copy()
-    density = np.round(new_df['population'] / new_df['area'])
-    new_df['density'] = density
+    new_df['density'] = new_df['population'] / new_df['area']
     return new_df
 
-print(population_density(test_df))
 
 # %%
 '''
@@ -101,18 +99,14 @@ függvény neve: plot_population
 '''
 
 # %%
-def plot_population(input_df)->plt.figure:
+def plot_population(input_df):
     new_df = input_df.copy()
-    # fig = plt.figure(figsize = (10, 5))
     plt.bar(new_df['country'],new_df['population'])
-    
     plt.xlabel('Country')
     plt.ylabel('Population')
     plt.title('Population of Countries')
-    plt.show
     return plt.figure
 
-plot_population(test_df)
 
 # %%
 '''
@@ -128,13 +122,11 @@ függvény neve: plot_area
 '''
 
 # %%
-def plot_area(input_df:pd.DataFrame)->plt.figure:
+def plot_area(input_df:pd.DataFrame):
     new_df = input_df.copy()
     plt.pie(new_df['area'],labels=new_df['country'])
-    plt.show()
     return plt.figure
 
-plot_area(test_df)
 
 
 
