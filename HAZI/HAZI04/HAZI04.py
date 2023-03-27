@@ -126,7 +126,7 @@ def add_age(input_df):
     age = []
     random.seed(42)
     for i in range(len(new_df)):
-        age.append(random.randint(18,66))
+        age.append(random.randint(18,67))
     new_df['age']=age
     return new_df
 
