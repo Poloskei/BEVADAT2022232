@@ -203,11 +203,12 @@ függvény neve: math_bar_plot
 # %%
 def math_bar_plot(input_df):
     new_df = input_df.copy()
+    fig, ax = plt.subplots()
     plt.bar(new_df['gender'],new_df['math score'].mean())
     plt.xlabel('Gender')
     plt.ylabel('Math Score')
     plt.title('Average Math Score by Gender')
-    return plt.figure
+    return fig
 
 
 # %%
@@ -228,11 +229,12 @@ függvény neve: writing_hist
 # %%
 def writing_hist(input_df):
     new_df = input_df.copy()
+    fig, ax = plt.subplots()
     plt.title('Distribution of Writing Scores')
     plt.xlabel('Writing Score')
     plt.ylabel('Number of Studnets')
     plt.hist(new_df['writing score'])
-    return plt.figure
+    return fig
 
 
 # %%
@@ -253,9 +255,10 @@ függvény neve: ethnicity_pie_chart
 # %%
 def enthnicity_pie_chart(input_df):
     new_df= input_df.copy()
+    fig, ax = plt.subplots()
     plt.pie(new_df.groupby('race/ethnicity').size()/len(new_df),labels=new_df['race/ethnicity'].unique(),autopct='%1.1f%%')
     plt.title('Proportion of Students by Race/Ethnicity')
-    return plt.figure
+    return fig
 
 
 
