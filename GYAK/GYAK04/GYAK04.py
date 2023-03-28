@@ -102,10 +102,10 @@ függvény neve: plot_population
 def plot_population(input_df):
     new_df = input_df.copy()
     fig, ax = plt.subplots()
-    plt.bar(new_df['country'],new_df['population'])
-    plt.xlabel('Country')
-    plt.ylabel('Population')
-    plt.title('Population of Countries')
+    ax.bar(new_df['country'],new_df['population'])
+    ax.set_xlabel('Country')
+    ax.set_ylabel('Population')
+    ax.set_title('Population of Countries')
     return fig
 
 
@@ -126,7 +126,7 @@ függvény neve: plot_area
 def plot_area(input_df:pd.DataFrame):
     new_df = input_df.copy()
     fig, ax = plt.subplots()
-    plt.pie(new_df['area'],labels=new_df['country'])
+    ax.pie(new_df['area'],labels=new_df['country'])
     return fig
 
 
