@@ -15,17 +15,17 @@ class KNNClassifier:
         return x,y
 
 
-    def __init__(self,k:int,test_split_ration:float)->None:
+    def __init__(self,k:int,test_split_ratio:float)->None:
         self.k = k
         self.test_split_ratio = test_split_ratio
         
 
 
-    def k_neighbors()->int:
+    def k_neighbors(self)->int:
         return self.k
 
-    def train_test_split(features:np.ndarray,labels:np.ndarray,) -> None:
-        test_size = int(len(features) * test_split_ratio)
+    def train_test_split(self,features:np.ndarray,labels:np.ndarray,) -> None:
+        test_size = int(len(features) * self.test_split_ratio)
         train_size = len(features) - test_size
         assert len(features) == test_size + train_size, "Size mismatch!"
 
@@ -37,22 +37,22 @@ class KNNClassifier:
         self.x_test = x_test
         self.y_test = y_test
 
-    def euclidean(element_of_x:np.ndarray) -> np.ndarray:
+    def euclidean(self,element_of_x:np.ndarray) -> np.ndarray:
         return np.sqrt(np.sum((self.x_train - element_of_x)**2,axis=1))
 
-    def predict(x_test:np.ndarray) -> np.ndarray:
+    def predict(self,x_test:np.ndarray) -> np.ndarray:
         labels_pred = []
         for x_test_element in x_test:
-            distances = euclidean(x_test_element)
-            distances = np.array(sorted(zip(distances,y_train)))
-            label_pred = mode(distances[:k,1],keepdims=False).mode
+            distances = self.euclidean(x_test_element)
+            distances = np.array(sorted(zip(distances,self.y_train)))
+            label_pred = mode(distances[:self.k,1],keepdims=False).mode
             labels_pred.append(label_pred)
         self.y_preds = np.array(labels_pred,dtype=np.int32)
 
-    def accuracy() -> float:
+    def accuracy(self) -> float:
         true_positive = (self.y_test == self.y_preds).sum()
         return true_positive / len(self.y_test) * 100
 
-    def plot_confusion_matrix():
+    def plot_confusion_matrix(self):
         conf_matrix = confusion_matrix(self.y_test,self.y_preds)
         sns.heatmap(conf_matrix,annot=True) 
