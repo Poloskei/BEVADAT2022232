@@ -19,7 +19,7 @@ class KNNClassifier:
         self.k = k
         self.test_split_ratio = test_split_ratio
         
-
+    @property
     def k_neighbors(self)->int:
         return self.k
 
