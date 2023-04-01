@@ -1,0 +1,14 @@
+load_csv: beolvasas pd.read_csv-vel
+	illetve sample fuggvénnyel keverem ahol a random_state-tel állítom be a random seedet. a "reset_index(drop=ture)" azert kell, hogy ne hozzon letre uj oszlopot a regi indexekkel
+	a splitteles series-e butitja y-t ezert ujra dataframe-be "eroszakolom"
+
+train_test_split: iloc hasznalata dataframek indexelesehez
+
+eluclidean: numpy fuggvenyek helyett pandas megfelelok
+
+predict: x_test.iterrows() a dataframe bejarasahoz
+	zip helyett uj oszlopba a distances melle teszem az y_train-t
+	eredeti distance ertekek (0-dik oszlop) szerint rendezem, majd head-del kivalasztom az elso k elemet
+
+accuracy: resetelem az oszlop es sor indexeket, hogy osszehasonlithatoak legyenek az elemek
+
