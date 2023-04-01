@@ -12,3 +12,8 @@ predict: x_test.iterrows() a dataframe bejarasahoz
 
 accuracy: resetelem az oszlop es sor indexeket, hogy osszehasonlithatoak legyenek az elemek
 
+confusion_matrix: kivettem a "pd.Int32Dtype"-okat mert "unkown" nak kezelte
+	amugy nem volt vele baj
+
+best_k: sztf1 logikaval
+
