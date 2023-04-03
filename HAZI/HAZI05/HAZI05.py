@@ -79,5 +79,5 @@ class KNNClassifier:
             if acc > bestval:
                 bestval=acc
                 bestk=i
-        return (bestk,bestval)
+        return bestk,bestval
 
