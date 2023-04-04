@@ -9,7 +9,7 @@ class KNNClassifier:
     def load_csv(csv_path:str) ->Tuple[pd.DataFrame,pd.DataFrame]:
         df = pd.read_csv(csv_path,na_values='""',delimiter=',')
         df = df.sample(frac=1,random_state=42).reset_index(drop=True)
-        x,y = df.iloc[:,:4],df.iloc[:,-1]
+        x,y = df.iloc[:,:-1],df.iloc[:,-1]
         y = pd.DataFrame(y).reset_index(drop=True)
         return x,y
 
