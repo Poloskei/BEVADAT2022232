@@ -15,5 +15,5 @@ accuracy: resetelem az oszlop es sor indexeket, hogy osszehasonlithatoak legyene
 confusion_matrix: kivettem a "pd.Int32Dtype"-okat mert "unkown" nak kezelte
 	amugy nem volt vele baj
 
-best_k: sztf1 logikaval
+best_k: maximum index, es ertek kivalasztas
 
