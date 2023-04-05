@@ -1,4 +1,3 @@
-
 import pandas as pd
 from typing import Tuple
 from scipy.stats import mode
@@ -17,6 +16,7 @@ class KNNClassifier:
     def __init__(self,k:int,test_split_ratio:float)->None:
         self.k = k
         self.test_split_ratio = test_split_ratio
+        self.y_preds = pd.DataFrame()
         
     @property
     def k_neighbors(self)->int:
@@ -40,21 +40,19 @@ class KNNClassifier:
         self.x_test = x_test
         self.y_test = y_test
 
-        
-
     def euclidean(self,element_of_x:pd.DataFrame) -> pd.DataFrame:
-        return pd.DataFrame(((self.x_train - element_of_x)**2).sum().pow(1./2))
-
+        return pd.DataFrame(((self.x_train - element_of_x)**2).sum(axis=1).pow(1./2))
 
     def predict(self,x_test:pd.DataFrame):
         labels_pred = []
-        for idx,x_test_element in x_test.iterrows():
-            distances = self.euclidean(self.x_train,x_test_element)
+        for i in range(len(x_test)):
+            distances = self.euclidean(x_test.iloc[i])
             distances['y']=self.y_train
-            distances.sort_values(by=[0],inplace=True)
-            label_pred = distances.head(self.k)['y'].mode()
-            #print(label_pred)
+            distances.sort_values(by = [0],inplace=True)
+            label_pred = distances.head(self.k)['y'].mode()[0]
             labels_pred.append(label_pred)
+
+       
         self.y_preds = pd.DataFrame(labels_pred)
 
     def accuracy(self) -> float:
@@ -73,11 +71,13 @@ class KNNClassifier:
         bestk=0
         bestval=0.0
         for i in range(1,20):
-            k=i
-            self.predict(self,self.x_test)
-            acc = self.accuracy(self)
+            self.__init__(i,0.2)
+            
+            self.predict(self.x_test)
+
+            acc = self.accuracy().item()
             if acc > bestval:
                 bestval=acc
                 bestk=i
+        
         return bestk,bestval
-
