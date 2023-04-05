@@ -80,4 +80,4 @@ class KNNClassifier:
                 bestval=acc
                 bestk=i
         
-        return bestk,bestval
+        return bestk,bestval.__round__(2)
