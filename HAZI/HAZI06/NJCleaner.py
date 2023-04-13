@@ -3,12 +3,12 @@ import pandas as pd
 
 class NJCleaner:
 
-    def __init__(self, csv_path):
+    def __init__(self, csv_path : str) -> None:
         self.data = pd.read_csv(csv_path)
 
     def order_by_scheduled_time(self):
-        self.data.sort_values('scheduled_time', inplace=True)
-        return self.data
+        order = self.data.sort_values('scheduled_time', inplace=True)
+        return order
 
     def drop_columns_and_nan(self):
         self.data.drop(['from', 'to'], axis=1, inplace=True)
@@ -38,12 +38,12 @@ class NJCleaner:
     def save_first_60k(self, save_path):
         self.data[:60000].to_csv(save_path, index=False)
 
-    def prep_df(self, csv_path='NJ_pm.csv'):
+    def prep_df(self, save_csv_path='data/NJ.csv'):
         self.order_by_scheduled_time()
         self.drop_columns_and_nan()
         self.convert_date_to_day()
         self.convert_scheduled_time_to_part_of_the_day()
         self.convert_delay()
         self.drop_unnecessary_columns()
-        self.save_first_60k(csv_path)
+        self.save_first_60k(save_csv_path)
         return self.data
