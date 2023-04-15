@@ -7,7 +7,7 @@ class NJCleaner:
         self.data = pd.read_csv(csv_path)
 
     def order_by_scheduled_time(self):
-        order = self.data.sort_values('scheduled_time', inplace=True)
+        order = self.data.sort_values('scheduled_time')
         return order
 
     def drop_columns_and_nan(self):
