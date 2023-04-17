@@ -47,12 +47,12 @@ def grid_search(data):
     return accuracies
 
 
-print("started")
+
 acc = grid_search(hfdata)
-print("done")
+
 print(acc)
 
-#Elég lassan futnak le a fitelések, gondolom a rekurzió meg a nagy adatmennyiség miatt. Megírtam a gridsearchot és hagytam dolgozni.
+# Gridseach-el futtatam ahol mindkét értéket változtattam, a min_samples_split-et kettesével
 # Nagy szórást nem vettem észre az eredmények között: 79% szitne mindig, még az is beválik neki, ha mindenre 0-t mond. Apró javulások akkor vettem észre, ha a min_samples_split-et feljebb vettem. Ha a max_depth 6 vagy annál nagyobb, akkor egy üres best_split miatt el crashel.
 
 #min_samples_split=20, max_depth=5 -> 0.7954779245360655
