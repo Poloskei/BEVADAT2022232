@@ -54,6 +54,7 @@ print(acc)
 
 # Gridseach-el futtatam ahol mindkét értéket változtattam, a min_samples_split-et kettesével
 # Nagy szórást nem vettem észre az eredmények között: 79% szitne mindig, még az is beválik neki, ha mindenre 0-t mond. Apró javulások akkor vettem észre, ha a min_samples_split-et feljebb vettem. Ha a max_depth 6 vagy annál nagyobb, akkor egy üres best_split miatt el crashel.
+# A legjobb eredményem a .7956 lett amit 'min_samples_split': 3, és 'max_depth': 3-mal értem el
 
 #min_samples_split=20, max_depth=5 -> 0.7954779245360655
 #min_samples_split=5, max_depth=5 -> 0.7954779245360655
