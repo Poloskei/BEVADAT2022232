@@ -15,20 +15,20 @@ class KMeansOnDigits:
         self.digits = load_digits()
 
     def predict(self,n_clusters:int,random_state:int,digits):
-        kmeans = KMeans(n_clusters=n_clusters, random_state=random_state)
-        clusters = kmeans.fit_predict(digits.data,digits.target)
+        kmeans = KMeans(n_clusters=self.n_clusters, random_state=self.random_state)
+        clusters = kmeans.fit_predict(self.digits.data,self.digits.target)
         self.clusters = clusters
 
-    def get_labels(self,clusters:np.ndarray, digits):
-        result = np.zeros(clusters.shape)
-        for i in digits.target_names:
-            mask = clusters == i
-            modusz = mode(digits.target[mask]).mode
+    def get_labels(self):
+        result = np.zeros(self.clusters.shape)
+        for i in self.digits.target_names:
+            mask = self.clusters == i
+            modusz = mode(self.digits.target[mask]).mode
             result[mask]= modusz
         self.labels = result
 
-    def calc_accuracy(self,target_labels:np.ndarray, predicted_labels:np.ndarray):
-        self.accuracy = round(accuracy_score(target_labels,predicted_labels),2)
+    def calc_accuracy(self):
+        self.accuracy = round(accuracy_score(self.digits.target,self.labels),2)
 
-    def confusion_matrix(self,y_true, y_pred):
-        self.mat = confusion_matrix(y_true,y_pred)
+    def confusion_matrix(self):
+        self.mat = confusion_matrix(self.digits.target,self.labels)
