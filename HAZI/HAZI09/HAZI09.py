@@ -14,7 +14,7 @@ class KMeansOnDigits:
     def load_dataset(self):
         self.digits = load_digits()
 
-    def predict(self,n_clusters:int,random_state:int,digits):
+    def predict(self):
         kmeans = KMeans(n_clusters=self.n_clusters, random_state=self.random_state)
         clusters = kmeans.fit_predict(self.digits.data,self.digits.target)
         self.clusters = clusters
