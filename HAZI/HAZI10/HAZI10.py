@@ -14,6 +14,8 @@ függvény neve: mnist_digit_data
 # %%
 def mnist_digit_data():
     (train_images, train_labels), (test_images, test_labels) = tf.keras.datasets.mnist.load_data()
+    train_images = train_images / 255.0
+    test_images = test_images / 255.0
     return train_images,train_labels,test_images,test_labels
 
 # %%
@@ -86,9 +88,5 @@ függvény neve: model_evaluate
 
 # %%
 def model_evaulate(model,test_images,test_labels):
-    test_loss, test_acc = model.evaluate(test_images,  test_labels, verbose=2)
+    test_loss, test_acc = model.evaluate(test_images,  test_labels)
     return  test_loss,test_acc
-
-# %%
-
-
