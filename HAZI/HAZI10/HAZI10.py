@@ -87,6 +87,6 @@ függvény neve: model_evaluate
 '''
 
 # %%
-def model_evaulate(model,test_images,test_labels):
+def model_evaluate(model,test_images,test_labels):
     test_loss, test_acc = model.evaluate(test_images,  test_labels)
     return  test_loss,test_acc
